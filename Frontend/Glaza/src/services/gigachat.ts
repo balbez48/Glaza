@@ -1,4 +1,5 @@
-
+import { RefObject } from 'react';
+import { CameraView } from 'expo-camera';
 
 const CREDENTIALS = "MDE5ZDBhYjEtYzg3Yy03MmE5LWIzODQtZWYyNjdjMDhkODM3OjE1Njg4NTg1LWY4ZGUtNGY1ZS04NzQ1LWU3OGYyZjM1M2Q0Yw==";
 const SCOPE = "GIGACHAT_API_PERS";
@@ -39,7 +40,7 @@ async function getAccessToken() {
     }
 }
 
-async function describeImage() {
+async function describeImage(cameraRef: RefObject<CameraView>) {
     const token = getAccessToken();
     const photo = await cameraRef.current.takePictureAsync({
         quality: 0.8,
