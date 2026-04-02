@@ -40,14 +40,8 @@ async function getAccessToken() {
     }
 }
 
-async function describeImage(cameraRef: RefObject<CameraView>) {
+export async function describeImage(base64: String) {
     const token = await getAccessToken();
-    const photo = await cameraRef.current.takePictureAsync({
-        quality: 0.8,
-        base64: true,
-    });
-
-    const base64 = photo.base64;
     const url = 'https://gigachat.devices.sberbank.ru/api/v1/chat/completions';
 
     const headers = {
