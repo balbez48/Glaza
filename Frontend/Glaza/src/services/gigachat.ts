@@ -47,7 +47,39 @@ export async function describeImage(base64: String) {
     const headers = {
         "Content-Type": "application/json",
         "Accept": "application/json",
-        "Authorization": `Basic ${token}`,
+        "Authorization": `Bearer ${token}`,
     };
 
+    const payload = {
+        "model": MODEL,
+        "messages": [
+            {
+                "role": "user",
+                "content": [
+                    { "type": "text", text: PROMPT },
+                    { "type": "image_url", image_url: { url: "data:image/jpeg;base64," + base64 } }
+                ],
+            }
+        ],
+        "max_tokens": 500,
+    }
+
+
+    const answer = await fetch(url, {
+        method: "POST",
+        body: JSON.stringify(payload),
+        headers: headers
+    }).then(response => {
+        if (response.status === 200 || response.status === 201) {
+            return response.json();
+        } else {
+            throw new Error(String(response.status));
+        }
+    }).then(data => {
+        return data;
+    }).catch(error => {
+        return "Ошибка: " + error;
+    })
+
+    return answer;
 }
