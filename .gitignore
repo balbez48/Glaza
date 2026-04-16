@@ -41,3 +41,22 @@ app-example
 # generated native folders
 /ios
 /android
+
+# Virtual environment
+.venv/
+venv/
+env/
+ENV/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+Backend/__pycache__/
+
+# Python distribution
+pip.pyz
+*.egg-info/
+dist/
+build/

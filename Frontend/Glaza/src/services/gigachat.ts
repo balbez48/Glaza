@@ -12,13 +12,13 @@ const PROMPT = `Ты помогаешь слабовидящему челове�
 Не используй слова "изображение", "фото", "на картинке" — говори напрямую.
 Отвечай только на русском языке.`;
 
-async function getAccessToken() {
+export async function getAccessToken() {
     const url = "https://ngw.devices.sberbank.ru:9443/api/v2/oauth";
     const headers = {
         "Content-Type": "application/x-www-form-urlencoded",
         "Accept": "application/json",
         "Authorization": `Basic ${CREDENTIALS}`,
-        "RqUID": "12345678-1234-1234-1234-123456789012",
+        "RqUID": crypto.randomUUID(),
     };
 
     try {
@@ -33,6 +33,7 @@ async function getAccessToken() {
         };
 
         const data = await response.json();
+        console.log('Token: ', data);
         return data.access_token;
 
     } catch (error) {
