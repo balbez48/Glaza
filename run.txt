@@ -1,0 +1,7 @@
+cd C:\Users\temat\source\repos\Glaza\Backend
+.venv\Scripts\activate
+python server.py
+
+
+cd C:\Users\temat\source\repos\Glaza\Frontend\Glaza
+npm run start:go

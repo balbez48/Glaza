@@ -8,7 +8,16 @@
     "scheme": "glaza",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "icon": "./assets/expo.icon"
+      "supportsTablet": true,
+      "icon": "./assets/images/icon.png",
+      "bundleIdentifier": "com.anonymous.glaza",
+      "infoPlist": {
+        "NSCameraUsageDescription": "Allow camera access to describe nearby objects.",
+        "NSMicrophoneUsageDescription": "Allow microphone access for camera video recording features.",
+        "NSAppTransportSecurity": {
+          "NSAllowsArbitraryLoads": true
+        }
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -18,7 +27,11 @@
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
       "predictiveBackGestureEnabled": false,
-      "package": "com.anonymous.Glaza"
+      "package": "com.anonymous.Glaza",
+      "permissions": [
+        "CAMERA",
+        "RECORD_AUDIO"
+      ]
     },
     "web": {
       "output": "static",
@@ -43,7 +56,15 @@
             "usesCleartextTraffic": true
           }
         }
-      ]
+      ],
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow camera access to describe nearby objects.",
+          "microphonePermission": "Allow microphone access for camera video recording features."
+        }
+      ],
+      "expo-web-browser"
     ],
     "experiments": {
       "typedRoutes": true,

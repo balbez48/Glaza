@@ -3,6 +3,7 @@ import { openBrowserAsync, WebBrowserPresentationStyle } from 'expo-web-browser'
 import { type ComponentProps } from 'react';
 
 type Props = Omit<ComponentProps<typeof Link>, 'href'> & { href: Href & string };
+type LinkPressEvent = Parameters<NonNullable<ComponentProps<typeof Link>['onPress']>>[0];
 
 export function ExternalLink({ href, ...rest }: Props) {
   return (
@@ -10,7 +11,7 @@ export function ExternalLink({ href, ...rest }: Props) {
       target="_blank"
       {...rest}
       href={href}
-      onPress={async (event) => {
+      onPress={async (event: LinkPressEvent) => {
         if (process.env.EXPO_OS !== 'web') {
           // Prevent the default behavior of linking to the default browser on native.
           event.preventDefault();
