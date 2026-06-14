@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+python-multipart
+requests
+Pillow
+urllib3==1.26.18
+openai>=1.0.0
